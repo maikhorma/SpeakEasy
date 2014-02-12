@@ -1,5 +1,5 @@
 # Speak Easy
-An [Event Ghost](http://www.eventghost.org/) plug-in that uses the [http://msdn.microsoft.com/en-us/library/hh362873.aspx](Microsoft Speech API) to turn voice commands into Event Ghost Events.
+An [Event Ghost](http://www.eventghost.org/) plug-in that uses the  [Microsoft Speech API](http://msdn.microsoft.com/en-us/library/hh362873.aspx) to turn voice commands into Event Ghost Events.
 
 ## Before you begin
 If your microphone is not ready for windows to use, the plugin will fail to initialize.
