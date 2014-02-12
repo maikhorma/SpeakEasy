@@ -14,21 +14,20 @@ import time
 from threading import Event, Thread
 import wx
 
-DEFAULT_WORDS = 'sphinx,start,notepad,command,system,close,help,lock,shutdown,reboot,cancel'
+DEFAULT_WORDS = 'roger,start,notepad,command,system,close,help,lock,shutdown,reboot,cancel,mute,save'
 
 class SpeakEasy(eg.PluginBase):
     counter = 0
     
     def __init__(self):
         self.AddEvents()
+        self.AddAction(Speaker)
 
     def __start__(self,words):
         self.wordList = words.split(',')
         def followUp(plugin):
-            print "sleepy"
             Event().wait(4)
             plugin.counter -= 1
-            print "counter %d" % plugin.counter
             if plugin.counter <= 0:
                 plugin.TriggerEvent("DIE")
                 plugin.counter = 0
@@ -56,3 +55,15 @@ class SpeakEasy(eg.PluginBase):
         panel.sizer.Add(topSizer,0,wx.EXPAND)
         while panel.Affirmed():
             panel.SetResult(textCtrl.GetValue())
+
+class Speaker(eg.ActionBase):
+
+    def __call__(self, word):
+        speech.say(word)
+
+    def Configure(self, word=""):
+        panel = eg.ConfigPanel()
+        textControl = wx.TextCtrl(panel, -1, word)
+        panel.sizer.Add(textControl, 1, wx.EXPAND)
+        while panel.Affirmed():
+            panel.SetResult(textControl.GetValue())        

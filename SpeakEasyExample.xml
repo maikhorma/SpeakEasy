@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EventGhost Version="1640" Guid="{E1E31830-B58A-4529-992E-C3C6ECB0D896}" Time="1392190145.53">
+    <Autostart Name="Autostart">
+        <Plugin Identifier="SpeakEasy" Guid="SpeakEasy" File="SpeakEasy">
+            gAJYUwAAAHJvZ2VyLHN0YXJ0LG5vdGVwYWQsY29tbWFuZCxzeXN0ZW0sY2xvc2UsaGVscCxsb2NrLHNodXRkb3duLHJlYm9vdCxjYW5jZWwsbXV0ZSxzYXZlcQCFcQEu
+        </Plugin>
+    </Autostart>
+    <Folder Name="VoiceRecognition" Expanded="True">
+        <Folder Name="Roger" id="5" Expanded="True">
+            <Folder Name="Start" id="6" Enabled="False">
+                <Macro Name="notepad" Expanded="True">
+                    <Event Name="SpeakEasy.notepad" />
+                    <Action>
+                        System.Execute(u'notepad.exe', u'', 0, False, 2, u'', False, False)
+                    </Action>
+                </Macro>
+                <Macro Name="notepad" Expanded="True">
+                    <Event Name="SpeakEasy.command" />
+                    <Action>
+                        System.Execute(u'cmd.exe', u'', 0, False, 2, u'', False, False)
+                    </Action>
+                </Macro>
+            </Folder>
+            <Folder Name="System" id="13" Enabled="False" Expanded="True">
+                <Macro Name="Help" Expanded="True">
+                    <Event Name="SpeakEasy.help" />
+                    <Action>
+                        Window.SendKeys(u'{F1}', False)
+                    </Action>
+                </Macro>
+                <Macro Name="Mute" Expanded="True">
+                    <Event Name="SpeakEasy.mute" />
+                    <Action>
+                        System.ToggleMute(u'Speakers (High Definition Audio')
+                    </Action>
+                </Macro>
+                <Macro Name="Lock" Expanded="True">
+                    <Event Name="SpeakEasy.lock" />
+                    <Action>
+                        System.LockWorkstation()
+                    </Action>
+                </Macro>
+                <Macro Name="Close" Expanded="True">
+                    <Event Name="SpeakEasy.close" />
+                    <Action>
+                        Window.SendKeys(u'{Alt+F4}', False)
+                    </Action>
+                </Macro>
+                <Macro Name="Shutdown" Enabled="False" Expanded="True">
+                    <Event Name="SpeakEasy.shutdown" />
+                    <Action>
+                        System.PowerDown(True)
+                    </Action>
+                </Macro>
+                <Macro Name="Reboot" Enabled="False" Expanded="True">
+                    <Event Name="SpeakEasy.reboot" />
+                    <Action>
+                        System.Reboot(True)
+                    </Action>
+                </Macro>
+            </Folder>
+            <Folder Name="None" id="35" Expanded="True">
+                <Macro Name="Toggle Mute" Expanded="True">
+                    <Event Name="SpeakEasy.mute" />
+                    <Action>
+                        System.ToggleMute(u'Speakers (High Definition Audio')
+                    </Action>
+                </Macro>
+                <Macro Name="Save" Expanded="True">
+                    <Event Name="SpeakEasy.save" />
+                    <Action>
+                        Window.SendKeys(u'{Ctrl+S}', False)
+                    </Action>
+                </Macro>
+            </Folder>
+        </Folder>
+        <Macro Name="System">
+            <Event Name="SpeakEasy.system" />
+            <Action>
+                EventGhost.EnableExclusive(XmlIdLink(13))
+            </Action>
+        </Macro>
+        <Macro Name="Start">
+            <Event Name="SpeakEasy.start" />
+            <Action>
+                EventGhost.EnableExclusive(XmlIdLink(6))
+            </Action>
+        </Macro>
+        <Macro Name="DisableAll" Expanded="True">
+            <Event Name="SpeakEasy.DIE" />
+            <Action>
+                EventGhost.DisableItem(XmlIdLink(5))
+            </Action>
+            <Action>
+                EventGhost.EnableExclusive(XmlIdLink(35))
+            </Action>
+            <Action>
+                SpeakEasy.Speaker(u'We are done here.')
+            </Action>
+        </Macro>
+        <Macro Name="Roger Activated!" Expanded="True">
+            <Event Name="SpeakEasy.roger" />
+            <Action>
+                EventGhost.EnableItem(XmlIdLink(5))
+            </Action>
+            <Action>
+                SpeakEasy.Speaker(u'Yes sir?')
+            </Action>
+        </Macro>
+    </Folder>
+</EventGhost>
