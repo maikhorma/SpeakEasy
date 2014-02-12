@@ -3,6 +3,7 @@ An [Event Ghost](http://www.eventghost.org/) plug-in that uses the  [Microsoft S
 
 ## Before you begin
 If your microphone is not ready for windows to use, the plugin will fail to initialize.
+
 1. Plugin/setup/install your microphone.
 2. Open the windows 7 or 8 search and type "Speech Recognition" to find the tool for setting up the microphone and start training.
 3. Launch "Windows Speech Recognition".
