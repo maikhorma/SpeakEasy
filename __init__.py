@@ -1,4 +1,5 @@
 import eg
+import dragonfly
 
 eg.RegisterPlugin(
     name = "SpeakEasy",
